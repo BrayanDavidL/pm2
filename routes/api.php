@@ -24,7 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //registro de asistencia
 Route::post('/registrar_asistencia/{usuarioId}', [AsistenciaController::class, 'create'])->name('registrar_asistencia');
+//registro instructores a la tabla instructores
 Route::post('/instructores_store', [InstructorController::class, 'create'])->name('instructores_store');
+//filtro de asistencia
 Route::get('/asistencia-filtro', [App\Http\Controllers\InstructorController::class,'filter'])->name('filter');
+//Registro de maerias con el intructor asignado
 Route::post('/materias_store', [App\Http\Controllers\SubjectsController::class, 'create'])->name('materias_store');
+//Regristro de aprendices en la tabla apprentice
 Route::post('/apprentice_store', [App\Http\Controllers\ApprenticeController::class, 'create'])->name('apprentice_store');

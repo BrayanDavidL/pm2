@@ -30,7 +30,7 @@ class SubjectsController extends Controller
     {
         $nombreMateria = $request->input('nombre');
         $courseId = $request->input('curso'); 
-        $usuarioId = $request->input('usuario_id');
+        $usuarioId = $request->input('usuario_id');//usuario del instructor del curso
 
         $materia = new Subjects;
 

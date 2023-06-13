@@ -17,10 +17,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('instructor_id');
             $table->unsignedBigInteger('tipo_asistencia_id');  
+            $table->date('fecha');
+            $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('instructor_id')->references('id')->on('instructors');
             $table->foreign('tipo_asistencia_id')->references('id')->on('tipo_asistencias');
-            $table->timestamps();
+            
             
         });
     }
