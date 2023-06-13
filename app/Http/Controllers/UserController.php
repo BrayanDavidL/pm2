@@ -10,8 +10,7 @@ class UserController extends Controller
     public function index()
     {
         $usuarios = User::all();
-        $tipoasistencia = Tipo_Asistencia::all();
-        return view('usuarios.index',['usuarios'=>$usuarios, 'tipoasistencia' => $tipoasistencia]);
+        return view('usuarios.index',['usuarios'=>$usuarios]);
     }
     
     public function materias()

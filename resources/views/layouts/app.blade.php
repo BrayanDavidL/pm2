@@ -51,11 +51,18 @@
                         @else
 
                         <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('asistencia')}}">Asistencia</a>
+                                </li>
+
+                        <li class="nav-item">
                                     <a class="nav-link" href="{{ url('instructor')}}">Instructores</a>
                                 </li>
                             
                         <li class="nav-item">
                                     <a class="nav-link" href="{{ url('apprentice')}}">Aprendices</a>
+                                </li>
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('vista_register_score')}}">Notas</a>
                                 </li>
                             
                             <li class="nav-item dropdown">
@@ -82,7 +89,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

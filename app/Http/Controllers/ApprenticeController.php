@@ -6,6 +6,7 @@ use App\Models\Apprentice;
 use App\Models\Curso;
 use App\Models\Instructor;
 use App\Models\User;
+use App\Models\Activities;
 use Illuminate\Http\Request;
 
 class ApprenticeController extends Controller
@@ -25,8 +26,9 @@ class ApprenticeController extends Controller
     {   
         $users = User::all();
         $cursos = Curso::all();
+        $activities = Activities::all();
         $apprentice = Apprentice::all();
-       return view('instructores.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice]);
+       return view('instructores.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice,'activities'=>$activities]);
     }
     
     public function redirigirAVista()

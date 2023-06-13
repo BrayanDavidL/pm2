@@ -12,9 +12,27 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Aprendiz</th>
-                    <th scope="col">Nota 1</th>
-                    <th scope="col">Nota 2</th>
-                    <th scope="col">Nota 3</th>
+                    <th scope="col"><select name="" id="">
+                        <option value=""></option>
+                        lect>
+                        @foreach ( $activities as $activity)
+                            <option value="{{$activity->id}}">{{$activity->name}}</option>
+                    @endforeach
+                    </select></th>
+                    <th scope="col"><select name="" id="">
+                        <option value=""></option>
+                        lect>
+                        @foreach ( $activities as $activity)
+                            <option value="{{$activity->id}}">{{$activity->name}}</option>
+                    @endforeach
+                    </select></th>
+                    <th scope="col"><select name="" id="">
+                        <option value=""></option>
+                        lect>
+                        @foreach ( $activities as $activity)
+                            <option value="{{$activity->id}}">{{$activity->name}}</option>
+                    @endforeach
+                    </select></th>
                     <th scope="col">Promedio</th>
                 </tr>
             </thead>
@@ -31,22 +49,36 @@
                     @foreach ($cursos as $curso)
                         @if ($instructor->curso_id == $curso->id)
                             <td>
-                                <input type="number" name="nota1" value="{{ $instructor->nota1 }}" placeholder="Nota 1">
+                                <input type="number" id="nota1" name="nota1" value="{{ $instructor->nota1 }}" oninput="calcular()" placeholder="Nota 1">
                             </td>
                             <td>
-                                <input type="number" name="nota2" value="{{ $instructor->nota2 }}" placeholder="Nota 2">
+                                <input type="number" id="nota2" name="nota2" value="{{ $instructor->nota2 }}" oninput="calcular()" placeholder="Nota 2">
                             </td>
                             <td>
-                                <input type="number" name="nota3" value="{{ $instructor->nota3 }}" placeholder="Nota 3">
+                                <input type="number" id="nota3" name="nota3" value="{{ $instructor->nota3 }}" oninput="calcular()" placeholder="Nota 3">
+                            </td>
+                            <td>
+                                <input type="number" id="total" name="total" style="width: 70%" readOnly>
                             </td>
                             @break
                         @endif
                     @endforeach
                     <td>
-                        @php
-                        $promedio = ($instructor->nota1 + $instructor->nota2 + $instructor->nota3) / 3;
-                        echo number_format($promedio, 2);
-                        @endphp
+                    <script type="text/javascript">
+                        tol.readOnly = true;
+                            function calcular(){
+                                try {
+                                    var a = parseFloat(document.getElementById("nota1").value);
+                                    var b = parseFloat(document.getElementById("nota2").value);
+                                    var c = parseFloat(document.getElementById("nota3").value);
+
+                                    var promedio = (a + b + c) / 3;
+
+                                    document.getElementById("total").value = promedio.toFixed(1);
+                                }catch (e) {}
+
+                    }
+                </script>
                     </td>
                 </tr>
                 @endforeach
