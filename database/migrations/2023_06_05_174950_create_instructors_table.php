@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('course_id');
-            $table->string('school_day');
-            $table->date('fecha');
-            $table->date('start_date');/*Seria el id de la tabla horario*/
+            $table->unsignedBigInteger('curso_id');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cursos_id')->references('id')->on('cursos');
         });
     }
 

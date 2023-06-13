@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('note');
             $table->unsignedBigInteger('apprentice_id');
-            $table->unsignedBigInteger('actity_id');
+            $table->unsignedBigInteger('activity_id');
             $table->timestamps();
             $table->foreign('apprentice_id')->references('id')->on('apprentices');
-            $table->foreign('actity_id')->references('id')->on('activities');            
+            $table->foreign('activity_id')->references('id')->on('activities');            
 
         });
     }

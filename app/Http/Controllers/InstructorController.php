@@ -34,7 +34,7 @@ class InstructorController extends Controller
         $courses = $cursos->pluck('course_id');
         $idsUsuarios = $instructors->pluck('user_id')->toArray();
         $aprendices = User::whereIn('id', $idsUsuarios)->get();
-        return view('instructores.index',['instructores'=>$instructors,'aprendices' => $aprendices,'cursos'=>$cursos, 'curso_id' => $idcurso,'courses'=>$courses]);
+        return view('instructores.index',['instructores'=>$instructors,'aprendices' => $aprendices,'cursos'=>$cursos, 'curso_id' => $idcurso,'courses'=>$courses,'subjects'=>$subjects]);
     }
 
     public function redirigirAVista()
