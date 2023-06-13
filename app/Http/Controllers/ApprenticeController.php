@@ -26,7 +26,7 @@ class ApprenticeController extends Controller
         $users = User::all();
         $cursos = Curso::all();
         $apprentice = Apprentice::all();
-       return view('apprentices.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice]);
+       return view('instructores.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice]);
     }
     
     public function redirigirAVista()
