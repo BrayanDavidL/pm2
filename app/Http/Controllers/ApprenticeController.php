@@ -22,15 +22,6 @@ class ApprenticeController extends Controller
        return view('apprentices.index',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice]);
     }
 
-    public function redirigirAVistaScore()
-    {   
-        $users = User::all();
-        $cursos = Curso::all();
-        $activities = Activities::all();
-        $apprentice = Apprentice::all();
-       return view('instructores.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice,'activities'=>$activities]);
-    }
-    
     public function redirigirAVista()
     {   
         $users = User::all();
@@ -48,7 +39,7 @@ class ApprenticeController extends Controller
         $instructor = new Apprentice;
 
         $instructor->user_id = $usuarioId;
-        $instructor->cursos_id = $courseId;
+        $instructor->curso_id = $courseId;
         $instructor->save();
         return back();
     }

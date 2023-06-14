@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\ApprenticeController;
+use App\Http\Controllers\ScoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,4 @@ Route::resource('/apprentice',ApprenticeController::class);
 Route::get('/vista_register_instructor', [InstructorController::class, 'redirigirAVista'])->name('redirigir.vista');
 Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->name('redirigir.materiavista');
 Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->name('redirigir.redirigirAVista');
-Route::get('/vista_register_score', [ApprenticeController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');
+Route::get('/vista_register_score', [ScoreController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');

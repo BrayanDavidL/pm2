@@ -6,6 +6,7 @@ use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ApprenticeController;
+use App\Http\Controllers\ScoreController;
 /*
 
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::get('/asistencia-filtro', [App\Http\Controllers\InstructorController::cla
 Route::post('/materias_store', [App\Http\Controllers\SubjectsController::class, 'create'])->name('materias_store');
 //Regristro de aprendices en la tabla apprentice
 Route::post('/apprentice_store', [App\Http\Controllers\ApprenticeController::class, 'create'])->name('apprentice_store');
+//Registro de notas por materia
+Route::post('/scores_store', [App\Http\Controllers\ScoreController::class, 'store'])->name('scores_store');
