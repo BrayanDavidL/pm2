@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.img-fluid{
+    margin: 0;
+    border-radius: 1rem 0 0 1rem;
+    height: 100px;
+    width: 100%;
+}
+
+
