@@ -19,7 +19,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="../Controller/editar.php" method="post">
+                <form action="{{ route('usuarios.store') }}" method="post">
+                    @csrf
                         <input type="hidden" name="id" id="update_id">
 
                         <div class="form-group">
@@ -57,7 +58,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-success">Actualizar</button>
+                    <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
                 </form>
             </div>

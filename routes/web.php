@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsistenciaController;
@@ -33,3 +32,13 @@ Route::get('/vista_register_instructor', [InstructorController::class, 'redirigi
 Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->name('redirigir.materiavista');
 Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->name('redirigir.redirigirAVista');
 Route::get('/vista_register_score', [ApprenticeController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');
+
+
+//usuarios
+Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+Route::post('/usuarios', [UserController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('usuarios.show');
+Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
+Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
