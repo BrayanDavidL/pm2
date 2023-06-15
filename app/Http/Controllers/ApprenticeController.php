@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Apprentice;
 use App\Models\Curso;
-use App\Models\Instructor;
 use App\Models\User;
-use App\Models\Activities;
+use App\Models\Subjects;
 use Illuminate\Http\Request;
+use App\Models\Score;
 
 class ApprenticeController extends Controller
 {
@@ -22,20 +22,20 @@ class ApprenticeController extends Controller
        return view('apprentices.index',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice]);
     }
 
-    public function redirigirAVistaScore()
-    {   
-        $users = User::all();
-        $cursos = Curso::all();
-        $activities = Activities::all();
-        $apprentice = Apprentice::all();
-       return view('instructores.notas',['users'=>$users,'cursos'=>$cursos,'apprentice' => $apprentice,'activities'=>$activities]);
-    }
-    
     public function redirigirAVista()
     {   
         $users = User::all();
         $cursos = Curso::all();
         return view('apprentices.register', ['users' => $users, 'cursos' => $cursos]);
+    }
+
+    public function consulta(){
+        $users = User::all();
+        $apprentices = Apprentice::all();
+        $cursos = Curso::all();
+        $subjects = Subjects::all();
+        $notas = Score::all();
+        return view('apprentices.consulta', ['users' => $users, 'subjects' => $subjects,'notas' => $notas,'apprentices' => $apprentices,'cursos'=>$cursos]);
     }
     /**
      * Show the form for creating a new resource.
@@ -48,7 +48,7 @@ class ApprenticeController extends Controller
         $instructor = new Apprentice;
 
         $instructor->user_id = $usuarioId;
-        $instructor->cursos_id = $courseId;
+        $instructor->curso_id = $courseId;
         $instructor->save();
         return back();
     }

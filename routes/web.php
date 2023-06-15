@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\ApprenticeController;
+use App\Http\Controllers\ScoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,7 @@ Route::resource('/apprentice',ApprenticeController::class);
 Route::get('/vista_register_instructor', [InstructorController::class, 'redirigirAVista'])->name('redirigir.vista');
 Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->name('redirigir.materiavista');
 Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->name('redirigir.redirigirAVista');
+<<<<<<< HEAD
 Route::get('/vista_register_score', [ApprenticeController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');
 
 
@@ -42,3 +44,7 @@ Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('usuarios.sh
 Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+=======
+Route::get('/vista_register_score', [ScoreController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');
+Route::get('/vista_consulta_usuario', [ApprenticeController::class, 'consulta'])->name('redirigir.consulta');
+>>>>>>> 2d3e1c4f962b0355896946243879e77a033d73aa
