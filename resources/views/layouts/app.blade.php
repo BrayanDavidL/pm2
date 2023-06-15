@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,11 +19,12 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="navBarWrapper">
-            <div class="container" >
-                <a class="navbar-brand" href="{{ url('/home') }}" > 
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     <h2>Sena Academico</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -39,50 +41,64 @@
                     <ul class="navbar-nav ms-auto" id="navLink">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                        @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @endif
                         @else
 
+                        @can('profe.asistencia','profe.asistencia')
                         <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('asistencia')}}">Asistencia</a>
-                                </li>
+                            <a class="nav-link" href="{{ url('asistencia')}}">Asistencia</a>
+                        </li>
+                        @endcan
+
+                        @can('admin.instructor')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('instructor')}}">Instructores</a>
+                        </li>
+                        @endcan
+
+                        @can('admin.apprentice')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('apprentice')}}">Aprendices</a>
+                        </li>
+                        @endcan
+
+                        @can('admin.scores_store','profe.vista_register_score')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('vista_register_score')}}">Notas</a>
+                        </li>
+                        @endcan
 
                         <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('instructor')}}">Instructores</a>
-                                </li>
-                            
-                        <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('apprentice')}}">Aprendices</a>
-                                </li>
-                        <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('vista_register_score')}}">Notas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('vista_consulta_usuario')}}">Consultar Notas</a>
-                                </li>
-                            
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                            <a class="nav-link" href="{{ url('vista_consulta_usuario')}}">Consultar Notas</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    <a class="nav-link" href="{{ url('usuarios') }}">Usuarios</a>
-                                    <a class="nav-link" href="{{ url('vista_register_materia') }}">Materias</a>
-                                </div>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                @can('admin.usuarios')
+                                <a class="nav-link" href="{{ url('usuarios') }}">Usuarios</a>
+                               
+                                @endcan
+                                @can('admin.vista_register_materia')
+                                <a class="nav-link" href="{{ url('vista_register_materia') }}">Materias</a>
+                                @endcan
+                            </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>
@@ -93,4 +109,5 @@
         </main>
     </div>
 </body>
+
 </html>
