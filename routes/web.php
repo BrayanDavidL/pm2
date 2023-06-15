@@ -34,3 +34,4 @@ Route::get('/vista_register_instructor', [InstructorController::class, 'redirigi
 Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->name('redirigir.materiavista');
 Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->name('redirigir.redirigirAVista');
 Route::get('/vista_register_score', [ScoreController::class, 'redirigirAVistaScore'])->name('redirigir.redirigirAVistaScore');
+Route::get('/vista_consulta_usuario', [ApprenticeController::class, 'consulta'])->name('redirigir.consulta');

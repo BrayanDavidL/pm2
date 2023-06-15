@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Apprentice;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,10 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
 
+    public function apprentice()
+    {
+        return $this->hasOne(Apprentice::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

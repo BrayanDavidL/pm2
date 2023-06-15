@@ -35,3 +35,8 @@ Route::post('/materias_store', [App\Http\Controllers\SubjectsController::class, 
 Route::post('/apprentice_store', [App\Http\Controllers\ApprenticeController::class, 'create'])->name('apprentice_store');
 //Registro de notas por materia
 Route::post('/scores_store', [App\Http\Controllers\ScoreController::class, 'store'])->name('scores_store');
+//filtrar notas por aprendiz
+Route::get('/scores_search', [App\Http\Controllers\ScoreController::class, 'search'])->name('scores_search');
+//Descargar notas por aprendiz
+Route::post('/scores_download_pdf', [App\Http\Controllers\ScoreController::class, 'pdf'])->name('scores_download_pdf');
+
