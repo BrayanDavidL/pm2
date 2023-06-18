@@ -18,6 +18,11 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
 </head>
 
 <body>
@@ -104,6 +109,7 @@
                 </div>
             </div>
         </nav>
+        <script src="{{ asset('js/horario.js') }}" defer></script>
         <main class="py-4">
             @yield('content')
         </main>

@@ -7,6 +7,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\HorarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +42,5 @@ Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('usuarios.sh
 Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+
+Route::get('/horario', [App\Http\Controllers\HorarioController::class, 'index']);
