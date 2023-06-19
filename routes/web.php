@@ -27,22 +27,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/asistencia',AsistenciaController::class)->middleware('can: profe.asistencia');
-Route::resource('/instructor',InstructorController::class)->middleware('can: admin.instructor');
-Route::resource('/apprentice',ApprenticeController::class)->middleware('can: admin.apprentice');
-Route::get('/vista_register_instructor', [InstructorController::class, 'redirigirAVista'])->middleware('can: admin.vista_register_instructor')->name('vista_register_instructor');
-Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->middleware('can: admin.vista_register_materia')->name('vista_register_materia');
-Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->middleware('can: admin.vista_register_apprentice')->name('vista_register_apprentice');
-Route::get('/vista_register_score', [ScoreController::class, 'redirigirAVistaScore'])->middleware('can: profe.vista_register_score')->name('vista_register_score');
-Route::get('/vista_consulta_usuario', [ApprenticeController::class, 'consulta'])->middleware('can: profe.vista_consulta_usuario')->name('vista_consulta_usuario');
+Route::resource('/asistencia',AsistenciaController::class);
+Route::resource('/instructor',InstructorController::class);
+Route::resource('/apprentice',ApprenticeController::class);
+Route::get('/vista_register_instructor', [InstructorController::class, 'redirigirAVista'])->name('vista_register_instructor');
+Route::get('/vista_register_materia', [SubjectsController::class, 'materiavista'])->name('vista_register_materia');
+Route::get('/vista_register_apprentice', [ApprenticeController::class, 'redirigirAVista'])->name('vista_register_apprentice');
+Route::get('/vista_register_score', [ScoreController::class, 'redirigirAVistaScore'])->name('vista_register_score');
+Route::get('/vista_consulta_usuario', [ApprenticeController::class, 'consulta'])->name('vista_consulta_usuario');
 
-Route::get('/usuarios', [UserController::class, 'index'])->middleware('can: admin.usuarios.index')->name('usuarios.index');
-Route::post('/usuarios', [UserController::class, 'store'])->middleware('can: admin.usuarios.store')->name('usuarios.store');
-Route::get('/usuarios/create', [UserController::class, 'create'])->middleware('can: admin.usuarios.create')->name('usuarios.create');
-Route::get('/usuarios/{id}', [UserController::class, 'show'])->middleware('can: admin.usuarios.show')->name('usuarios.show');
-Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->middleware('can: admin.usuarios.edit')->name('usuarios.edit');
-Route::put('/usuarios/{id}', [UserController::class, 'update'])->middleware('can: admin.usuarios.update')->name('usuarios.update');
-Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->middleware('can: admin.usuarios.destroy')->name('usuarios.destroy');
+Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+Route::post('/usuarios', [UserController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('usuarios.show');
+Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
+Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 Route::get('/horario', [HorarioController::class, 'index'])->name('horario.horario');
 Route::post('/horario/guardar', [HorarioController::class, 'guardar'])->name('horario.guardar');
