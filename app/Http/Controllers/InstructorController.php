@@ -19,22 +19,16 @@ class InstructorController extends Controller
         return view('instructores.consulta',['instructores'=>$instructores]);
     }
 
-    public function usuario()
-    {
-        $instru = Instructor::all();
-        return view('instructores.index',['instru'=>$instru]);
-    }
-
     public function index()
     {
-        $instructors = Instructor::all();
+        $instructores = Instructor::all();
         $cursos = Curso::all();
         $subjects = Subjects::all();
         $idcurso = $cursos->pluck('course_id')->toArray();
         $courses = $cursos->pluck('course_id');
-        $idsUsuarios = $instructors->pluck('user_id')->toArray();
+        $idsUsuarios = $instructores->pluck('user_id')->toArray();
         $aprendices = User::whereIn('id', $idsUsuarios)->get();
-        return view('instructores.index',['instructores'=>$instructors,'aprendices' => $aprendices,'cursos'=>$cursos, 'curso_id' => $idcurso,'courses'=>$courses,'subjects'=>$subjects]);
+        return view('instructores.index',['instructores'=>$instructores,'aprendices' => $aprendices,'cursos'=>$cursos, 'curso_id' => $idcurso,'courses'=>$courses,'subjects'=>$subjects]);
     }
 
     public function redirigirAVista()
@@ -62,7 +56,7 @@ class InstructorController extends Controller
         $instructor = new Instructor;
 
         $instructor->user_id = $usuarioId;
-        $instructor->course_id = $courseId;
+        $instructor->curso_id = $courseId;
         $instructor->save();
         return back();
     }

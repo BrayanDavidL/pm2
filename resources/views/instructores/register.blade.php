@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <label for="usuario">Seleccionar usuario:</label>
                         <select name="usuario" id="usuario" class="form-select" required>
-                            <option value=""></option>
+                            <option value=""disabled selected>Elija un usuario</option>
                             @foreach($users as $usuario)
                             <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>   
                         @endforeach
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label for="cursos">Seleccionar curso:</label>
                         <select name="cursos" id="cursos" class="form-select" required>
-                            <option value=""></option>
+                            <option value="" disabled selected>Elija un Curso</option>
                             @foreach($cursos as $curso)
                                 <option value="{{ $curso->id }}">{{ $curso->name }}</option>
                             @endforeach

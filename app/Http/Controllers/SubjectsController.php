@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subjects;
 use App\Models\Curso;
 use App\Models\User;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
 
 class SubjectsController extends Controller
@@ -21,9 +22,10 @@ class SubjectsController extends Controller
 
     public function materiavista()
     {   
+        $instructores = Instructor::all();
         $users = User::all();
         $cursos = Curso::all();
-        return view('instructores.materias', ['users' => $users, 'cursos' => $cursos]);
+        return view('instructores.materias', ['users' => $users, 'cursos' => $cursos,'instructores'=>$instructores]);
     }
 
     public function create(Request $request)
