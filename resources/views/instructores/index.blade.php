@@ -35,7 +35,7 @@
                         @endif
                     @endforeach
                     @foreach ($cursos as $curso)
-                        @if ($instructor->course_id == $curso->id)
+                        @if ($instructor->curso_id == $curso->id)
                             <td>{{ $curso->name }}</td>
                             @break
                         @endif

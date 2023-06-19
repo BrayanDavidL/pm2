@@ -16,7 +16,7 @@
     <div class="form-group">
         <label for="curso">Curso:</label>
         <select name="curso" id="curso" class="form-select">
-            <option value=""></option>
+            <option value="" disabled selected>Elija un Curso</option>
             @foreach ($cursos as $curso)
                 <option value="{{ $curso->id }}">{{ $curso->name }}</option>
             @endforeach
@@ -26,10 +26,16 @@
     <div class="form-group">
         <label for="usuario_id">Instructor</label>
         <select name="usuario_id" id="usuario_id" class="form-select">
-            <option value=""></option>
-            @foreach ($users as $user)
-                <option value="{{ $user->id }}">{{ $user->name }}</option>
+            <option value=""  disabled selected>Elija un Usuario</option>
+            @foreach ( $instructores as $instructor )
+                @foreach ($users as $user)
+                @if ($instructor->user_id == $user->id)
+                <option value="{{ $instructor->id }}">{{ $user->name }}</option>
+                            @break
+                            @endif
+                @endforeach
             @endforeach
+            
         </select>
     </div><br>
     <button type="submit" class="btn btn-primary">Registrar</button>

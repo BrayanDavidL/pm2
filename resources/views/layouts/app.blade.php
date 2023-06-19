@@ -20,12 +20,12 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
-    <div id="app">
+<body style="background-color: aquamarine;">
+    <div id="app" style="border-bottom: 2rem;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="navBarWrapper">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    <h2>Sena Academico</h2>
+                    <h1>Sena Academico</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

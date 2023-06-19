@@ -69,32 +69,27 @@ class ScoreController extends Controller
     }
 
 
-        public function pdf(Request $request) 
-        {
-            $documento = $request->input('documento');
-            $resultados = Score::where('document', $documento)->get();
+    public function pdf(Request $request)
+    {
+         $documento = $request->input('documento');
+        $resultados = Score::where('document', $documento)->get();
+    
+        $apprentices = Apprentice::all();
+        $users = User::all();
+        $cursos = Curso::all();
+        $subjects = Subjects::all();
+    
+        $html = view('apprentices.consulta', compact('resultados', 'apprentices', 'users', 'cursos', 'subjects'))->render();
+    
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+    
+        $dompdf->render();
+    
+        $filename = $documento . '.pdf';
+    
+        $output = $dompdf->output();
 
-            $apprentices = Apprentice::all();
-            $users = User::all();
-            $cursos = Curso::all();
-            $subjects = Subjects::all();
-
-            // Generar el contenido HTML para el PDF
-            $html = view('apprentices.consulta', compact('resultados', 'apprentices', 'users', 'cursos', 'subjects'))->render();
-
-            // Crear una instancia de dompdf con las opciones
-            $dompdf = new Dompdf();
-
-            // Cargar el contenido HTML en dompdf
-            $dompdf->loadHtml($html);
-
-            // Renderizar el contenido HTML en PDF
-            $dompdf->render();
-
-            // Generar el nombre del archivo PDF
-            $filename = '$documento.pdf';
-
-            // Descargar el archivo PDF
             return $dompdf->stream($filename);
         } 
 
