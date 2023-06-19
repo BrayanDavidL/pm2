@@ -8,6 +8,7 @@ use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\ApprenticeController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\HorarioController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,4 +44,6 @@ Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuari
 Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
 Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
-Route::get('/horario', [App\Http\Controllers\HorarioController::class, 'index']);
+Route::get('/horario', [HorarioController::class, 'index'])->name('horario.horario');
+Route::post('/horario/guardar', [HorarioController::class, 'guardar'])->name('horario.guardar');
+Route::get('/horario/agregar', [HorarioController::class, 'agregar'])->name('horario.agregar');

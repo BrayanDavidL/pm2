@@ -66,35 +66,45 @@
     </div>
 
     <div class="row justify-content-center">
-            <table class="table table-sm table-bordered table-hover table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Direccion</th>
-                        <th scope="col">Fecha de Nacimiento</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($usuarios as $usuario)
-                    <tr>
-                        <th scope="row">{{ $usuario->id }}</th>
-                        <td>{{ $usuario->name }}</td>
-                        <td>{{ $usuario->document_number }}</td>
-                        <td>{{ $usuario->telephone}}</td>
-                        <td>{{ $usuario->email}}</td>
-                        <td>{{ $usuario->male}}</td>
-                        <td>{{ $usuario->address}}</td>
-                        <td>{{ $usuario->age}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-sm table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Acciones</th> <!-- Nueva columna para acciones -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($usuarios as $usuario)
+                <tr>
+                    <th scope="row">{{ $usuario->id }}</th>
+                    <td>{{ $usuario->name }}</td>
+                    <td>{{ $usuario->document_number }}</td>
+                    <td>{{ $usuario->telephone }}</td>
+                    <td>{{ $usuario->email }}</td>
+                    <td>{{ $usuario->male }}</td>
+                    <td>{{ $usuario->address }}</td>
+                    <td>{{ $usuario->age }}</td>
+                    <td>
+                        <!-- Botones de acciones -->
+                        <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-primary">Editar</a>
+                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
+
 @endsection

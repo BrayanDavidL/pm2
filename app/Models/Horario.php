@@ -7,5 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Horario extends Model
 {
-    use HasFactory;
+    protected $table = 'horarios';
+    protected $fillable = ['hora', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
+    // Relación con el modelo Grupo
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class);
+    }
+    public function materia()
+    {
+        return $this->belongsTo(Materia::class);
+    }
+
+    // Métodos o relaciones adicionales si los necesitas
+
+    public function getDias()
+    {
+        return [
+            'lunes' => $this->lunes,
+            'martes' => $this->martes,
+            'miercoles' => $this->miercoles,
+            'jueves' => $this->jueves,
+            'viernes' => $this->viernes,
+        ];
+    }
 }
