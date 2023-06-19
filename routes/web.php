@@ -44,10 +44,7 @@ Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->middleware('
 Route::put('/usuarios/{id}', [UserController::class, 'update'])->middleware('can: admin.usuarios.update')->name('usuarios.update');
 Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->middleware('can: admin.usuarios.destroy')->name('usuarios.destroy');
 
-<<<<<<< HEAD
 Route::get('/horario', [HorarioController::class, 'index'])->name('horario.horario');
 Route::post('/horario/guardar', [HorarioController::class, 'guardar'])->name('horario.guardar');
 Route::get('/horario/agregar', [HorarioController::class, 'agregar'])->name('horario.agregar');
-=======
 Route::get('/horario', [App\Http\Controllers\HorarioController::class, 'index']);
->>>>>>> 38dad0a2fb569e1bc6a8516986bb08f3d082296f
