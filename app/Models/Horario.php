@@ -14,9 +14,9 @@ class Horario extends Model
     {
         return $this->belongsTo(Curso::class);
     }
-    public function materia()
+    public function subject()
     {
-        return $this->belongsTo(Materia::class);
+        return $this->belongsTo(Subjects::class);
     }
 
     // Métodos o relaciones adicionales si los necesitas
