@@ -15,7 +15,7 @@
 
     <div class="form-group">
         <label for="curso">Curso:</label>
-        <select name="curso" id="curso" class="form-select">
+        <select name="cursos" id="cursos" class="form-select">
             <option value="" disabled selected>Elija un Curso</option>
             @foreach ($cursos as $curso)
                 <option value="{{ $curso->id }}">{{ $curso->name }}</option>

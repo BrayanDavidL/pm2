@@ -43,7 +43,7 @@ class ApprenticeController extends Controller
     public function create(Request $request)
     {
         $usuarioId = $request->input('usuario');
-        $courseId = $request->input('curso'); 
+        $courseId = $request->input('cursos'); 
 
         $instructor = new Apprentice;
 

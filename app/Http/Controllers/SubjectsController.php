@@ -31,7 +31,7 @@ class SubjectsController extends Controller
     public function create(Request $request)
     {
         $nombreMateria = $request->input('nombre');
-        $courseId = $request->input('curso'); 
+        $courseId = $request->input('cursos'); 
         $usuarioId = $request->input('usuario_id');//usuario del instructor del curso
 
         $materia = new Subjects;
