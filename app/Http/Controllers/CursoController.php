@@ -34,7 +34,20 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos enviados en el formulario
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+        // Crear un nuevo curso con los datos enviados
+        Curso::create([
+            'nombre' => $request->input('nombre'),
+            'descripcion' => $request->input('descripcion'),
+        ]);
+
+        // Redireccionar a la página de cursos o mostrar un mensaje de éxito
+        return redirect()->route('curso.index')->with('success', 'Curso creado exitosamente');
     }
 
     /**
@@ -58,7 +71,20 @@ class CursoController extends Controller
      */
     public function update(Request $request, Curso $curso)
     {
-        //
+        // Validar los datos enviados en el formulario
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+        ]);
+
+        // Actualizar los datos del curso existente
+        $curso->update([
+            'nombre' => $request->input('nombre'),
+            'descripcion' => $request->input('descripcion'),
+        ]);
+
+        // Redireccionar a la página de cursos o mostrar un mensaje de éxito
+        return redirect()->route('curso.index')->with('success', 'Curso actualizado exitosamente');
     }
 
     /**

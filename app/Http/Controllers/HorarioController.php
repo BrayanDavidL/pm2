@@ -5,29 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Horario;
 use App\Models\Curso;
 use Illuminate\Http\Request;
-use App\Models\Materia;
+use App\Models\Subject;
 
 class HorarioController extends Controller
 {
     public function index()
     {
         $cursos = Curso::all();
-        $materias = Materia::all();
+        $subjects = Subject::all();
         $horarios = Horario::all();
 
-        return view('horario.horario', compact('cursos', 'materias', 'horarios'));
+        return view('horario.horario', compact('cursos', 'subjects', 'horarios'));
     }
 
     public function guardar(Request $request)
     {
         // Validar los datos enviados en el formulario
         $request->validate([
-            'curso' => 'required',
+            'cursos' => 'required',
             'horario' => 'required',
         ]);
 
         // Obtener el ID del curso seleccionado
-        $cursoId = $request->input('curso');
+        $cursoId = $request->input('cursos');
 
         // Obtener el curso seleccionado
         $curso = Curso::findOrFail($cursoId);
@@ -37,11 +37,11 @@ class HorarioController extends Controller
 
         // Iterar sobre los datos del horario
         foreach ($horarioData as $hora => $dias) {
-            foreach ($dias as $dia => $materia) {
+            foreach ($dias as $dia => $subjects) {
                 // Crear o actualizar una entrada en la base de datos para cada hora y día
                 $horario = Horario::updateOrCreate(
                     ['curso_id' => $cursoId, 'hora' => $hora],
-                    [$dia => $materia]
+                    [$dia => $subjects]
                 );
             }
         }
@@ -54,13 +54,15 @@ class HorarioController extends Controller
         $horarios = $request->input('horarios');
     
         foreach ($horarios as $hora => $dias) {
-            foreach ($dias as $dia => $materiaId) {
+            foreach ($dias as $dia => $subjectId) {
                 // Guardar los datos en la base de datos
                 // Por ejemplo, puedes crear un nuevo registro en la tabla de horarios con los datos recibidos
                 Horario::create([
                     'hora' => $hora,
                     'dia' => $dia,
-                    'materia_id' => $materiaId,
+                    'subject_id' => $subjectId,
+                    
+ 
                 ]);
             }
         }

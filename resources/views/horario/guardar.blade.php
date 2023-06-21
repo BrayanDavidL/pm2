@@ -9,8 +9,8 @@
     <div class="form-group">
         <label for="materia">Materia</label>
         <select class="form-control" name="materia" id="materia">
-            @foreach ($materias as $materia)
-                <option value="{{ $materia->id }}">{{ $materia->nombre }}</option>
+            @foreach ($subjects as $subject)
+                <option value="{{ $subject->id }}">{{ $subject->nombre }}</option>
             @endforeach
         </select>
     </div>
@@ -27,3 +27,4 @@
     <!-- Otros campos del formulario -->
 
     <button type="submit" class="btn btn-primary">Guardar
+</form>
