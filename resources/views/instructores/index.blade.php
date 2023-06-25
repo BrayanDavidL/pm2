@@ -15,9 +15,23 @@
             <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
             </svg>
         </a>
+        <hr>
+        <style>
+    table {
+        margin: 20px; 
+        border-collapse: collapse; 
+        border: 1px solid black; 
+    }
+
+    th, td {
+        padding: 10px; 
+        border: 1px solid black; 
+        padding: 10px;
+    }
+</style>
+    
     <div class="row justify-content-center">
-        <div class="col-md-8">
-        <table class="table">
+            <table class="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -45,7 +59,8 @@
                 @endforeach
                 </table>
             </div>
-        </div>
+        
+        
     </div>
 </div>
 @endsection

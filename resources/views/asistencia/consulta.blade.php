@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
+<style>
+    .card {
+        display: inline-block; /* Permite que la tarjeta se ajuste automáticamente al contenido */
+        border: 1px solid black; /* Borde de la tarjeta */
+        padding: 10px; /* Espaciado interno de la tarjeta */
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        
+            <div class="card" style=" width: 900px; height: 500px;">
+            <br>
             <form action="{{ route('filter') }}" method="GET" >
                 <div class="form-group">
                     <label for="fecha">Filtrar por Fecha:</label>
@@ -12,6 +20,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Filtrar</button>
             </form>
+            <br>
             
             <table class="table table-sm table-bordered table-hover table-striped">
                 <thead>
@@ -42,7 +51,8 @@
     @endforeach
 </tbody>
             </table>
-        </div>
+            </div>
+        
     </div>
 </div>
 @endsection

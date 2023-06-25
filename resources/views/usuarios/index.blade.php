@@ -64,8 +64,11 @@
             </div>
         </div>
     </div>
+   <br>
+<br>
+<div class="row justify-content-center">
 
-    <div class="row justify-content-center">
+<br>    
         <table class="table table-sm table-bordered table-hover table-striped">
             <thead>
                 <tr>
@@ -105,6 +108,9 @@
             </tbody>
         </table>
     </div>
+     
+    
 </div>
+   
 
 @endsection

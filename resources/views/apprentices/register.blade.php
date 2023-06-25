@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card {
+        display: inline-block; /* Permite que la tarjeta se ajuste automáticamente al contenido */
+        border: 1px solid black; /* Borde de la tarjeta */
+    }
+   
+</style>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-5">
-                <form action="{{ route('apprentice_store')}}" method="POST">
+            <div class="card" style="width: 500px; height: 320px;">
+            <br>
+            <form action="{{ route('apprentice_store')}}" method="POST">
                     @csrf
                     <h2>Registro de Aprendices</h2>
                     <div class="form-group">
@@ -28,6 +36,6 @@
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
             </div>
-        </div>
+            </div>
     </div>
 @endsection

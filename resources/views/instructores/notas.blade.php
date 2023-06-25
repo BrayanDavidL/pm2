@@ -1,17 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card {
+        display: inline-block; /* Permite que la tarjeta se ajuste automáticamente al contenido */
+        border: 1px solid black; /* Borde de la tarjeta */
+        padding: 10px; /* Espaciado interno de la tarjeta */
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-
+            <div class="card" style="width: 1200px; height: 600px;">
             <form action="{{ route('scores_store') }}" method="POST">
+                <hr>
                 <select name="materia" id="materia">
                     <option value="" disabled selected>Selecciona una Materia</option>
                     @foreach ( $subjects as $subject )
                     <option value="{{ $subject->id}}">{{$subject->nombre}}</option>
                     @endforeach
                 </select>
+                <br>
+                <hr>
 
                 <table class="table table-striped">
                     <thead>
@@ -55,7 +64,11 @@
                     </tbody>
                 </table>
             </form>
-        </div>
+
+            </div>
+
+           
+       
     </div>
 </div>
 </div>

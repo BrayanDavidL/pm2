@@ -28,14 +28,27 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
 </head>
+<style>
+    .navbar-brand {
+        margin-left: 30px; 
+        margin-top: 10px; 
+        /* Aplica un margen de 20 píxeles a la izquierda del enlace */
+    }
+</style>
 
-<body style="background-color: aquamarine;">
+<body style="background-color: withe;">
     <div id="app" style="border-bottom: 2rem;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="navBarWrapper">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    <h1>Sena Academico</h1>
+            <a href="{{ url('/home') }}">
+            <img src="../img/logo.png" style="width: 110px; height: 70px;" alt="login form" class="img-fluid" />
+            </a>
+        <br>
+        <a class="navbar-brand" href="{{ url('/home') }}">
+                    <h1>Sena-Academico</h1>
                 </a>
+
+        <div class="container">
+               
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -52,38 +65,12 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link"href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
                         @else
 
-                        @can('profe.asistencia','profe.asistencia')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('asistencia')}}">Asistencia</a>
-                        </li>
-                        @endcan
-
-                        @can('admin.instructor')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('instructor')}}">Instructores</a>
-                        </li>
-                        @endcan
-
-                        @can('admin.apprentice')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('apprentice')}}">Aprendices</a>
-                        </li>
-                        @endcan
-
-                        @can('admin.scores_store','profe.vista_register_score')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('vista_register_score')}}">Notas</a>
-                        </li>
-                        @endcan
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('vista_consulta_usuario')}}">Consultar Notas</a>
-                        </li>
+                       
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -91,10 +78,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                            
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -106,6 +90,10 @@
                                 @can('admin.vista_register_materia')
                                 <a class="nav-link" href="{{ url('vista_register_materia') }}">Materias</a>
                                 @endcan
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
                             </div>
                         </li>
                         @endguest

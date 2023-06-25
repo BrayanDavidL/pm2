@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card {
+        border: 1px solid black; /* Establece un borde sólido de 1 píxel de grosor y color negro para la tarjeta */
+    }
+</style>
+<br><br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            
-            <form action="{{ route('materias_store') }}" method="POST">
+        <div class="card" style="width: 500px; heigth: 600px;">
+        <form action="{{ route('materias_store') }}" method="POST">
     @csrf
     <br>
     <div class="form-group">
@@ -40,6 +45,7 @@
     </div><br>
     <button type="submit" class="btn btn-primary">Registrar</button>
 </form>
-    </div>
+<br>
+        </div>  
 </div>
 @endsection

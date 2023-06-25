@@ -1,14 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .card {
+        display: inline-block; /* Permite que la tarjeta se ajuste automáticamente al contenido */
+        border: 1px solid black; /* Borde de la tarjeta */
+        padding: 10px; /* Espaciado interno de la tarjeta */
+
+    
+    }
+   
+</style>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-                <form action="{{ route('scores_search') }}" method="GET">
+       <div class="card" style="width: 400px; height: 170px;">
+       <form action="{{ route('scores_search') }}" method="GET">
                     <div class="form-group">
+                        <br>
                         <label for="documento">Buscar por número de documento:</label>
                         <input type="text" name="documento" id="documento" class="form-control" value="{{ $documentsearch ?? ''}}">
-                    </div><br>
+                    </div>  
                     <button type="submit" class="btn btn-primary">Buscar</button>
                 </form>
             </div>
@@ -64,6 +75,8 @@
                     </table>
                 </div>
             @endif
+       </div>
+                
     </div>
 </div>
 @endsection
